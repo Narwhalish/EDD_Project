@@ -11,7 +11,7 @@ while True:
      counter +=1
      ser.write(str(chr(counter)).encode('utf-8')) # Convert the decimal number to ASCII then send it to the Arduino
 
-     print(ser.readline()) # Read the newest output from the Arduino
+     print(ser.readline().decode('utf-8')) # Read the newest output from the Arduino
 
      sleep(.1) # Delay for one tenth of a second
 
