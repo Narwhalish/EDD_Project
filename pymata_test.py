@@ -10,8 +10,7 @@ board = PyMata3()
 
 def setup():
     board.set_pin_mode(BOARD_LED, Constants.OUTPUT)
-
-
+    
 def loop():
     print("LED On")
     board.digital_write(BOARD_LED, 1)
