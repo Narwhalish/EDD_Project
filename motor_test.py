@@ -8,10 +8,20 @@ motor_pin = 9
 uno = PyMata3(1)
 
 def setup():
-    uno.set_pin_mode(motor_pin, Constants.OUTPUT)
+    uno.set_pin_mode(13, Constants.OUTPUT)
 
 def loop():
-    uno.analog_write(motor_pin, 255)
+    uno.digital_write(13, Constants.HIGH)
+    uno.sleep(1)
+    uno.digital_write(13, Constants.LOW)
+    uno.sleep(1)
+
+
+# def setup():
+#     uno.set_pin_mode(motor_pin, Constants.OUTPUT)
+#
+# def loop():
+#     uno.analog_write(motor_pin, 255)
 
 if __name__ == "__main__":
     setup()

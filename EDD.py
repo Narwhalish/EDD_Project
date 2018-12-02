@@ -1,5 +1,4 @@
 import tkinter as tk
-import serial
 
 #execute ls/dev/tty* when arduino is connected to raspi
 
