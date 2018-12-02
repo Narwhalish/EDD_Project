@@ -11,9 +11,9 @@ def setup():
     uno.set_pin_mode(13, Constants.OUTPUT)
 
 def loop():
-    uno.digital_write(13, Constants.HIGH)
+    uno.digital_write(13, 1)
     uno.sleep(1)
-    uno.digital_write(13, Constants.LOW)
+    uno.digital_write(13, 0)
     uno.sleep(1)
 
 
