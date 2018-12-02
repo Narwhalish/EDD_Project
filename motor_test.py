@@ -22,8 +22,8 @@ def loop():
 #
 # def loop():
 #     uno.analog_write(motor_pin, 255)
-
-if __name__ == "__main__":
+def blink():
+    if __name__ == "__main__":
     setup()
     while True:
         loop()

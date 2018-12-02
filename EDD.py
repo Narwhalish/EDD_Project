@@ -1,26 +1,11 @@
 import tkinter as tk
-
-#execute ls/dev/tty* when arduino is connected to raspi
+import motor_test
 
 root = tk.Tk()
 frame = tk.Frame(root)
 frame.pack()
 root.title("EDD Interface")
 
-
-"""
-class Application(tk.Frame):
-    def __init__(self, master):
-        self.master = master
-        master.title("EDD Interface")
-
-        self.label("[PRODUCT NAME]")
-        self.label.pack()
-
-        button-new-volume = Button(master, text = "Input New Volume", command = volume)
-        button-cont-pour = Button(master, text = "Continue Pour", command = pour)
-        button-clean = Button(master, text = "Clean", command = clean)
-"""
 def volume():
     pass
 
@@ -30,14 +15,15 @@ def pour():
 def clean():
     pass
 
-
-volume = tk.Button(frame,
-                   text="Input New Volume",
-                   command = volume)
+volume = tk.Button(frame, text="Input New Volume", command = volume)
 volume.pack(side=tk.LEFT)
-cont = tk.Button(frame,
-                   text="Continue Pour", command = pour)
+cont = tk.Button(frame, text="Continue Pour", command = pour)
 cont.pack(side=tk.LEFT)
 clean = tk.Button(frame, text="Clean", command = clean)
 clean.pack(side=tk.LEFT)
+
+#testing connection with arduino
+blink = tk.Button(frame, text="BLINK", command = motor_test.blink)
+blink.pack(side=tk.BOTTOM)
+
 root.mainloop()
