@@ -1,8 +1,6 @@
 import tkinter as tk
 import serial
 
-#remember to install serial and RPi
-ser = serial.Serial("/dev/ttyACM0", 9600)
 #execute ls/dev/tty* when arduino is connected to raspi
 
 root = tk.Tk()
