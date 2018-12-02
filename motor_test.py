@@ -10,7 +10,7 @@ uno = PyMata3(1)
 def setup():
     uno.set_pin_mode(13, Constants.OUTPUT)
 
-def loop():
+def blink():
     uno.digital_write(13, 1)
     uno.sleep(1)
     uno.digital_write(13, 0)
@@ -22,8 +22,7 @@ def loop():
 #
 # def loop():
 #     uno.analog_write(motor_pin, 255)
-def blink():
+def run_test():
     if __name__ == "__main__":
     setup()
-    while True:
-        loop()
+    blink()
