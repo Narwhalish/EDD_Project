@@ -5,13 +5,17 @@ root = tk.Tk()
 frame = tk.Frame(root)
 frame.pack()
 root.title("EDD Interface")
+volume = 0
 
 def volume():
     var = 0
     number = tk.Entry(frame, textvariable = var)
     number.pack()
-    volume = var.get()
+    confirm = tk.Button(frame, text="Ok", command = input)
+    confirm.pack()
 
+def input():
+    volume = root.number.get()
     print(volume)
 
 volume = tk.Button(frame, text="Input New Volume", command = volume)
