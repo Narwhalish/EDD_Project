@@ -5,35 +5,26 @@ from pymata_aio.pymata3 import PyMata3
 from pymata_aio.constants import Constants
 
 class Uno:
-    uno = Pymata3()
-    ultraTrigPin = 9
-    ultraEchoPin = 10
+    uno = PyMata3()
+    TRIG_PIN = 9
+    ECHO_PIN = 10
+    MOTOR_PIN = 3
 
     #should have a variable here for desired volume that's sent from pi
 
     def __init__(self):
-        # self.uno.set_pin_mode(ultraTrigPin, Constants.OUTPUT)
-        # self.uno.set_pin_mode(ultraEchoPin, Constants.INPUT)
-        self.uno.sonar_config(ultraTrigPin, ultraEchoPin, )
+        self.uno.set_pin_mode(self.MOTOR_PIN, Constants.OUTPUT)
+        self.uno.sonar_config(self.TRIG_PIN, self.ECHO_PIN, self.set_distance)
 
-    def measure(self):
-        # clear Trig Pin
-        self.uno.digital_write(ultraTrigPin, 0)
-        self.uno.sleep(0.002)
-
-        # set Trig Pin on High for 10 microseconds
-        self.uno.digital_write(ultraTrigPin, 1)
-        self.uno.sleep(0.010)
-        self.uno.digital_write(ultraTrigPin, 0)
+    def get_distance(self):
+        return self.uno.sonar_data_retrieve(self.TRIG_PIN)
 
     def pour(self):
-        #write motor speed
-        #if area x sensed height = desired volume, stop motor
+        self.uno.analog_write(self.MOTOR_PIN, 255)
 
-
-
-
-
-#
-# def clean():
-#     pass
+if __name__ == '__main__':
+    board = Uno()
+    while True:
+        if board.measure():
+            print(board.measure())
+            board.pour()
