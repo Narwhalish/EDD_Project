@@ -1,5 +1,38 @@
 import tkinter as tk
 
+class GUI(tk.Frame):
+    def __init__(self, master = None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.home_buttons()
+
+    def volume():
+        for widget in self.winfo_children():
+            widget.destroy
+        number = tk.Entry(frame)
+
+
+    def pour():
+        pass
+
+    def clean():
+        pass
+
+    def home_buttons(self):
+
+        volume = tk.Button(self, text="Input New Volume", command = self.volume, height = 10, width = 20)
+        cont = tk.Button(self, text="Continue Pour", command = self.pour, height = 10, width = 20)
+        clean = tk.Button(self, text="Clean", command = self.clean, height = 10, width = 20)
+
+        volume.grid(columnspan = 1)
+        cont.grid(columnspan = 1)
+        clean.grid(columnspan = 1)
+
+root = GUI()
+root.mainloop()
+
+"""
 root = tk.Tk()
 root.geometry("500x500")
 root.title("EDD Interface")
@@ -48,3 +81,4 @@ volume.pack(side=tk.LEFT)
 cont.pack(side=tk.LEFT)
 clean.pack(side=tk.LEFT)
 root.mainloop()
+"""
