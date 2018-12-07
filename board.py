@@ -11,12 +11,22 @@ class Uno:
 
 
     def __init__(self):
-        self.uno.set_pin_mode(ultraTrigPin, Constants.OUTPUT)
-        self.uno.set_pin_mode(ultraEchoPin, Constants.INPUT)
+        # self.uno.set_pin_mode(ultraTrigPin, Constants.OUTPUT)
+        # self.uno.set_pin_mode(ultraEchoPin, Constants.INPUT)
+        self.uno.sonar_config(ultraTrigPin, ultraEchoPin, )
 
     def measure(self):
-        self.uno.digital_write(ultraTrigPin, LOW)
-        self.uno.digital_write()
+        # clear Trig Pin
+        self.uno.digital_write(ultraTrigPin, 0)
+        self.uno.sleep(0.002)
+
+        # set Trig Pin on High for 10 microseconds
+        self.uno.digital_write(ultraTrigPin, 1)
+        self.uno.sleep(0.010)
+        self.uno.digital_write(ultraTrigPin, 0)
+
+
+
 
 
 #
