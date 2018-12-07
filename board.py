@@ -9,6 +9,7 @@ class Uno:
     ultraTrigPin = 9
     ultraEchoPin = 10
 
+    #should have a variable here for desired volume that's sent from pi
 
     def __init__(self):
         # self.uno.set_pin_mode(ultraTrigPin, Constants.OUTPUT)
@@ -24,6 +25,10 @@ class Uno:
         self.uno.digital_write(ultraTrigPin, 1)
         self.uno.sleep(0.010)
         self.uno.digital_write(ultraTrigPin, 0)
+
+    def pour(self):
+        #write motor speed
+        #if area x sensed height = desired volume, stop motor
 
 
 
