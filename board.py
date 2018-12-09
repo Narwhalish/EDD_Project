@@ -14,13 +14,20 @@ class Uno:
 
     def __init__(self):
         self.uno.set_pin_mode(self.MOTOR_PIN, Constants.PWM)
-        self.uno.sonar_config(self.TRIG_PIN, self.ECHO_PIN)
+        # self.uno.sonar_config(self.TRIG_PIN, self.ECHO_PIN)
 
     def get_distance(self):
-        return self.uno.sonar_data_retrieve(self.TRIG_PIN)
+        # return self.uno.sonar_data_retrieve(self.TRIG_PIN)
+        pass
 
     def pour(self):
-        self.uno.analog_write(self.MOTOR_PIN, 255)
+        for i in range(0, 256, 20):
+            self.uno.analog_write(self.MOTOR_PIN, i)
+            self.uno.sleep(0.25)
+        for i in range(0, 256, 20):
+            self.uno.analog_write(self.MOTOR_PIN, 255 - i)
+            self.uno.sleep(0.25)
+        # self.uno.analog_write(self.MOTOR_PIN, 300)
         # self.uno.sleep(2)
         # self.uno.analog_write(self.MOTOR_PIN, 127)
         # self.uno.sleep(2)
@@ -28,5 +35,9 @@ class Uno:
 if __name__ == '__main__':
     board = Uno()
     while True:
-        if board.get_distance() and board.get_distance() > 10:
-            board.pour()
+        board.pour()
+    # while True:
+    #     distance = board.get_distance()
+    #     if distance and distance > 10:
+    #         # print(distance)
+    #         board.pour()
