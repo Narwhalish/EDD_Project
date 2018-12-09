@@ -55,7 +55,7 @@ btn_list = [
 '4',  '5',  '6',
 '7',  '8',  '9', '0']
 
-r = 1
+r = 10
 c = 0
 for b in btn_list:
     cmd= lambda b=b: print(b)
