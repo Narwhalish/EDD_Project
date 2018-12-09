@@ -4,6 +4,11 @@ class GUI():
     def __init__(self):
         pass
 
+    def window(self):
+        while True:
+            (width, height) = (500, 500)
+            screen = pygame.display.set_mode((width, height))
+
 
     def home(self):
         volume = pygame.draw.rect(screen, green)
@@ -11,14 +16,11 @@ class GUI():
         clean = pygame.draw.rect(screen, green)
 
 
-    def window(self):
-        while True:
-            (width, height) = (500, 500)
-            screen = pygame.display.set_mode((width, height))
-            home()
 
     def start(self):
-        window()
+        self.window()
+        self.home()
+
 
 
 
