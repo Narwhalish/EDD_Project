@@ -6,16 +6,17 @@ root.title("EDD Interface")
 
 volume_input = tk.Frame(root)
 volume_input.pack()
-volume_input.place(height = 500, width = 500)
+volume_input.place(height = 2000, width = 2000)
 
 home_frame = tk.Frame(root)
 home_frame.pack()
-home_frame.place(height = 500, width = 500)
+home_frame.place(height = 2000, width = 2000)
 
 volume = 0
+entry = "0"
 
 def input():    #save number entered as desired volume
-    volume = number.get()
+    volume = int(entry)
     print(volume)
 
 def pour():
@@ -31,7 +32,7 @@ cont = tk.Button(home_frame, text="Continue Pour", command = pour, height = 10, 
 clean = tk.Button(home_frame, text="Clean", command = clean, height = 10, width = 20)
 
 #buttons on volume_input
-number = tk.Entry(volume_input)
+number = tk.Text(volume_input)
 confirm = tk.Button(volume_input, text="Ok", command = input)
 pour=tk.Button(volume_input, text="Pour", command = pour, height = 10, width = 20)
 back=tk.Button(volume_input, text="Back to Home", command = home_frame.lift, height = 10, width = 20)
@@ -41,13 +42,11 @@ volume.pack(side=tk.TOP)
 cont.pack(side=tk.TOP)
 clean.pack(side=tk.TOP)
 
-#packing buttons on volume_input
-"""
-number.pack(side=tk.TOP)
-confirm.pack(side=tk.TOP)
-pour.pack(side=tk.BOTTOM)
-back.pack(side=tk.BOTTOM)
-"""
+#grid buttons on volume_input
+number.grid(row = 0, column = 0)
+confirm.grid(row = 0, column = 1)
+pour.grid(row = 1, column = 0)
+back.grid(row = 1, column = 1)
 
 #creating num_pad
 btn_list = [
@@ -55,14 +54,21 @@ btn_list = [
 '4',  '5',  '6',
 '7',  '8',  '9', '0']
 
+def add_to_entry(self):
+    global entry
+    print(val)
+    entry += val
+    print(entry)
+
 r = 10
-c = 0
+c = 3
 for b in btn_list:
-    cmd= lambda b=b: print(b)
-    b = tk.Button(volume_input, text=b,width=5,command=cmd).grid(row = r, column = c)
+    print(b)
+    print(type(b))
+    b = tk.Button(volume_input, text=b,width=5,command=lambda: add_to_entry(self.cget('text'))).grid(row = r, column = c)
     c += 1
-    if c > 4:
-        c = 0
+    if c > 7:
+        c = 3
         r += 1
 
 root.mainloop()
