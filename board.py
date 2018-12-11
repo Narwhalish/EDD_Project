@@ -22,7 +22,8 @@ class Uno:
 
     def pour(self, desired_height):
         self.uno.analog_write(self.MOTOR_PIN, 50)
-        if self.get_distance()
+        if self.get_distance():
+            pass
 
     def clean(self):
 

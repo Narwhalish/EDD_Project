@@ -1,5 +1,5 @@
 import tkinter as tk
-import board
+#import board
 
 root = tk.Tk()
 root.attributes("-fullscreen", True)
@@ -21,6 +21,9 @@ def input():    #save number entered as desired volume
 
 def clean():
     #should call the same pymata pour thing as clean, except like a billion times faster
+    pass
+
+def pour():
     pass
 
 #buttons on home_frame
@@ -51,18 +54,25 @@ btn_list = [
 '4',  '5',  '6',
 '7',  '8',  '9', '0']
 
-def add_to_entry(self):
-    global entry
+def add_to_entry(val):
+    global desired_height
     print(val)
-    entry += val
-    print(entry)
+    desired_height += int(val)
+    print(desired_height)
+    print("HAHA IT DOESN'T WORK")
 
 r = 10
 c = 3
+num = 0
+cmd = lambda x: add_to_entry(x)
+
 for b in btn_list:
+
     print(b)
     print(type(b))
-    b = tk.Button(volume_input, text=b,width=5,command=lambda: add_to_entry(self.cget('text'))).grid(row = r, column = c)
+    num = int(b)
+    print(num)
+    button = tk.Button(volume_input, text=b,width=5,command= cmd(num)).grid(row = r, column = c)
     c += 1
     if c > 7:
         c = 3
