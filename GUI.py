@@ -1,4 +1,5 @@
 import tkinter as tk
+import board
 
 root = tk.Tk()
 root.attributes("-fullscreen", True)
@@ -12,15 +13,11 @@ home_frame = tk.Frame(root)
 home_frame.pack()
 home_frame.place(height = 2000, width = 2000)
 
-volume = 0
-entry = "0"
+desired_height = 0
 
 def input():    #save number entered as desired volume
-    volume = int(entry)
-    print(volume)
-
-def pour():
-    pass
+    desired_height = number.get() / (11.5 * 5)
+    print(desired_height)
 
 def clean():
     #should call the same pymata pour thing as clean, except like a billion times faster
@@ -28,7 +25,7 @@ def clean():
 
 #buttons on home_frame
 volume = tk.Button(home_frame, text="Input New Volume", command = volume_input.lift, height = 10, width = 20)
-cont = tk.Button(home_frame, text="Continue Pour", command = pour, height = 10, width = 20)
+cont = tk.Button(home_frame, text="Continue Pour", command = lambda: board.pour(volume), height = 10, width = 20)
 clean = tk.Button(home_frame, text="Clean", command = clean, height = 10, width = 20)
 
 #buttons on volume_input

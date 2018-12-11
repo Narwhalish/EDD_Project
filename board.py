@@ -18,15 +18,19 @@ class Uno:
 
     def get_distance(self):
         return self.uno.sonar_data_retrieve(self.TRIG_PIN)
+        # pass
 
-    def pour(self):
-        self.uno.analog_write(self.MOTOR_PIN, 255)
-        # self.uno.sleep(2)
-        # self.uno.analog_write(self.MOTOR_PIN, 127)
-        # self.uno.sleep(2)
+    def pour(self, desired_height):
+        self.uno.analog_write(self.MOTOR_PIN, 50)
+        if self.get_distance()
+
+    def clean(self):
+
 
 if __name__ == '__main__':
     board = Uno()
     while True:
-        if board.get_distance() and board.get_distance() > 10:
-            board.pour()
+        if board.get_distance() and board.get_distance() < 20:
+            board.pour(1)
+        else:
+            board.pour(2)
