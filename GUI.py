@@ -1,4 +1,5 @@
 import tkinter as tk
+from functools import partial
 #import board
 
 root = tk.Tk()
@@ -13,6 +14,7 @@ home_frame = tk.Frame(root)
 home_frame.pack()
 home_frame.place(height = 2000, width = 2000)
 
+input_height = ''
 desired_height = 0
 
 def input():    #save number entered as desired volume
@@ -55,24 +57,19 @@ btn_list = [
 '7',  '8',  '9', '0']
 
 def add_to_entry(val):
-    global desired_height
+    global desired_height, input_height
     print(val)
-    desired_height += int(val)
+    input_height += val
+    print(input)
+    desired_height = int(input_height)
     print(desired_height)
-    print("HAHA IT DOESN'T WORK")
 
 r = 10
 c = 3
 num = 0
 cmd = lambda x: add_to_entry(x)
-
 for b in btn_list:
-
-    print(b)
-    print(type(b))
-    num = int(b)
-    print(num)
-    button = tk.Button(volume_input, text=b,width=5,command= cmd(num)).grid(row = r, column = c)
+    button = tk.Button(volume_input, text=b,width=5,command = lambda num = b: cmd(num)).grid(row = r, column = c)
     c += 1
     if c > 7:
         c = 3
