@@ -18,7 +18,7 @@ input_height = ''
 desired_height = 0
 
 def input():    #save number entered as desired volume
-    desired_height = number.get() / (11.5 * 5)
+    #desired_height = number.get() / (11.5 * 5) das not right
     print(desired_height)
 
 def clean():
@@ -34,7 +34,7 @@ cont = tk.Button(home_frame, text="Continue Pour", command = lambda: board.pour(
 clean = tk.Button(home_frame, text="Clean", command = clean, height = 10, width = 20)
 
 #buttons on volume_input
-number = tk.Text(volume_input)
+number = tk.Label(volume_input, text = input_height)
 confirm = tk.Button(volume_input, text="Ok", command = input)
 pour=tk.Button(volume_input, text="Pour", command = pour, height = 10, width = 20)
 back=tk.Button(volume_input, text="Back to Home", command = home_frame.lift, height = 10, width = 20)
@@ -50,19 +50,19 @@ confirm.grid(row = 0, column = 1)
 pour.grid(row = 1, column = 0)
 back.grid(row = 1, column = 1)
 
+def add_to_entry(val):
+    global desired_height, input_height, number
+    input_height += val
+    desired_height = int(input_height)
+    print(desired_height)
+    number = tk.Label(volume_input, text = input_height)
+    number.grid(row = 0, column = 0)
+
 #creating num_pad
 btn_list = [
 '1',  '2',  '3',
 '4',  '5',  '6',
 '7',  '8',  '9', '0']
-
-def add_to_entry(val):
-    global desired_height, input_height
-    print(val)
-    input_height += val
-    print(input)
-    desired_height = int(input_height)
-    print(desired_height)
 
 r = 10
 c = 3
