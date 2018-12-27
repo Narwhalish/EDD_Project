@@ -9,29 +9,26 @@ class Uno:
     TRIG_PIN = 9
     ECHO_PIN = 10
     MOTOR_PIN = 3
-
+    current_distance = 0
     #should have a variable here for desired volume that's sent from pi
 
     def __init__(self):
         self.uno.set_pin_mode(self.MOTOR_PIN, Constants.PWM)
-        self.uno.sonar_config(self.TRIG_PIN, self.ECHO_PIN)
+        self.uno.sonar_config(self.TRIG_PIN, self.ECHO_PIN, cb=self.set_distance, ping_interval=33, max_distance=50)
 
-    def get_distance(self):
-        return self.uno.sonar_data_retrieve(self.TRIG_PIN)
-        # pass
+    def set_distance(self, data):
+        self.current_distance = data
 
     def pour(self, desired_height):
-        self.uno.analog_write(self.MOTOR_PIN, 50)
-        if self.get_distance():
-            pass
+        if self.current_distance:
+            while self.current_distance <= desired_height:
+                self.uno.analog_write(self.MOTOR_PIN, 127)
+        self.uno.analog_write(self.MOTOR_PIN, 0)
 
     def clean(self):
+        pass
 
-
-if __name__ == '__main__':
-    board = Uno()
-    while True:
-        if board.get_distance() and board.get_distance() < 20:
-            board.pour(1)
-        else:
-            board.pour(2)
+board = Uno()
+print(board.current_distance)
+board.pour(30)
+print(board.current_distance)
