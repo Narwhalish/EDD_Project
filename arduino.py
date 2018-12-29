@@ -7,11 +7,11 @@ import time
 
 class Uno:
     uno = PyMata3()
-    dispense_rate = 9999
-    motor_spd = 255
+    dispense_rate = 2
+    motor_spd = 100
     MOTOR_PIN = 3
 
-    desired_amount = 0
+    desired_amount = 510
 
     def __init__(self):
         self.uno.set_pin_mode(self.MOTOR_PIN, Constants.PWM)
@@ -20,12 +20,18 @@ class Uno:
         self.desired_amount = amount
         # print(f'the amount is {self.desired_amount}')
 
-    def pour(self):
+    def pour_amount(self):
+        print('pouring')
         self.uno.analog_write(self.MOTOR_PIN, self.motor_spd)
-        time.sleep(self.desired_amount / dispense_rate)
+        time.sleep(3)
         self.uno.analog_write(self.MOTOR_PIN, 0)
+        # time.sleep(self.desired_amount / self.dispense_rate)
+        # self.uno.analog_write(self.MOTOR_PIN, 0)
+
+    def clean_container(self):
+        self.uno.analog_write(self.MOTOR_PIN, 255)
 
 # board = Uno()
 # while True:
-#     board.pour(vol)
-#     time.sleep(1)
+#     board.pour_amount()
+    # time.sleep(1)
