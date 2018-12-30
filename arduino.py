@@ -31,7 +31,6 @@ class Uno:
     def clean_container(self):
         self.uno.analog_write(self.MOTOR_PIN, 255)
 
-# board = Uno()
-# while True:
-#     board.pour_amount()
-    # time.sleep(1)
+#board = Uno()
+#while True:
+#    board.pour_amount()
