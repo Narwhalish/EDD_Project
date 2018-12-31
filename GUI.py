@@ -36,7 +36,7 @@ def clear_input():
     global desired_amount, input_amount, number
     desired_amount = 0
     input_amount = ''
-    number.config(text='')
+    number.config(text=input_amount)
 
 #buttons on volume_input
 number = tk.Label(volume_input, text = input_amount, font = our_font)
