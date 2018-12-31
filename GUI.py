@@ -3,9 +3,9 @@
 
 import tkinter as tk
 import tkinter.font
-#import arduino
+import arduino
 
-#board = arduino.Uno()
+board = arduino.Uno()
 root = tk.Tk()
 root.attributes("-fullscreen", True)
 root.title("EDD Interface")
@@ -27,7 +27,7 @@ desired_amount = 0
 #buttons on home_frame
 volume = tk.Button(home_frame, text="Input New Volume", font = our_font, command=volume_input.lift)
 cont = tk.Button(home_frame, text="Continue Pour", font = our_font)
-#clean = tk.Button(home_frame, text="Clean", font = our_font, command=board.clean_container)
+clean = tk.Button(home_frame, text="Clean", font = our_font, command=board.clean_container)
 
 #quit button on home_frame
 quit = tk.Button(home_frame, text="Quit", font = our_font, command = root.destroy)
@@ -40,21 +40,21 @@ def clear_input():
 
 #buttons on volume_input
 number = tk.Label(volume_input, text = input_amount, font = our_font)
-#confirm = tk.Button(volume_input, text="Ok", font = our_font, command=lambda: board.set_amount(desired_amount))
-#pour=tk.Button(volume_input, text="Pour", font = our_font, command=board.pour_amount)
+confirm = tk.Button(volume_input, text="Ok", font = our_font, command=lambda: board.set_amount(desired_amount))
+pour=tk.Button(volume_input, text="Pour", font = our_font, command=board.pour_amount)
 back=tk.Button(volume_input, text="Back to Home", font = our_font, command = home_frame.lift)
 
 #packing buttons on home_frame
 volume.pack(side=tk.TOP)
 cont.pack(side=tk.TOP)
-#clean.pack(side=tk.TOP)
+clean.pack(side=tk.TOP)
 quit.pack(side=tk.TOP)
 
 
 #grid buttons on volume_input
 number.grid(row = 0, column = 0)
-#confirm.grid(row = 0, column = 1)
-#pour.grid(row = 1, column = 0)
+confirm.grid(row = 0, column = 1)
+pour.grid(row = 1, column = 0)
 back.grid(row = 1, column = 1)
 
 clear = tk.Button(volume_input, text="Clear", font = our_font, command = clear_input)
