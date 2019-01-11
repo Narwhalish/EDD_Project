@@ -19,15 +19,16 @@ home_frame = tk.Frame(root)
 home_frame.pack()
 home_frame.place(height = 480, width = 800)
 
-our_font = tkinter.font.Font(family = "Times", size = 30)
+main_page_font = tkinter.font.Font(family = "Times", size = 60)
+our_font = tkinter.font.Font(family = "Times", size = 27)
 
 input_amount = ''
 desired_amount = 0
 
 #buttons on home_frame
-volume = tk.Button(home_frame, text="Input New Volume", font = our_font, command=volume_input.lift)
-cont = tk.Button(home_frame, text="Continue Pour", font = our_font)
-clean = tk.Button(home_frame, text="Clean", font = our_font, command=board.clean_container)
+volume = tk.Button(home_frame, text="Input New Volume", font = main_page_font, command=volume_input.lift)
+cont = tk.Button(home_frame, text="Continue Pour", font = main_page_font, command=board.pour_amount())
+clean = tk.Button(home_frame, text="Clean", font = main_page_font, command=board.clean_container)
 
 #quit button on home_frame
 quit = tk.Button(home_frame, text="Quit", font = our_font, command = root.destroy)
@@ -48,7 +49,7 @@ back=tk.Button(volume_input, text="Back to Home", font = our_font, command = hom
 volume.pack(side=tk.TOP)
 cont.pack(side=tk.TOP)
 clean.pack(side=tk.TOP)
-quit.pack(side=tk.TOP)
+#quit.pack(side=tk.TOP) Quit functionality is not required in production version
 
 
 #grid buttons on volume_input
@@ -63,7 +64,7 @@ clear.grid(row = 0, column = 2)
 
 def add_to_entry(val):
     global desired_amount, input_amount, number
-    input_amount+= val
+    input_amount += val
     desired_amount = int(input_amount)
     print(desired_amount)
     number.config(text=input_amount)
