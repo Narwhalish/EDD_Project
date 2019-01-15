@@ -82,7 +82,7 @@ cmd = lambda x: add_to_entry(x)
 for b in btn_list:
     button = tk.Button(volume_input, text=b, font = our_font, command=lambda num = b: cmd(num)).grid(row=r, column=c)
     c += 1
-    if c > 7:
+    if c > 5:
         c = 3
         r += 1
 
