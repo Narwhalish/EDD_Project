@@ -4,6 +4,7 @@
 from pymata_aio.pymata3 import PyMata3
 from pymata_aio.constants import Constants
 import time
+
 # Create Uno class
 class Uno:
     # Initialize PyMata3 and set motor_spd and MOTOR_PIN
