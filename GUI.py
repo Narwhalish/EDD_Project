@@ -29,7 +29,7 @@ desired_amount = 0
 
 # Create buttons for home_frame
 volume = tk.Button(home_frame, text="Input New Volume", font = main_page_font, command=volume_input.lift)
-cont = tk.Button(home_frame, text="Continue Pour", font = main_page_font, command=board.pour_amount
+cont = tk.Button(home_frame, text="Continue Pour", font = main_page_font, command=board.pour_amount)
 clean = tk.Button(home_frame, text="Clean", font = main_page_font, command=board.clean_container)
 
 # quit = tk.Button(home_frame, text="Quit", font = our_font, command = root.destroy) Quit functionality is not required in production version
